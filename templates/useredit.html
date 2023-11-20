@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title_block %}<title>useredit</title>{% endblock %}
+{% block body_block %}
+    <body>
+        <h1>Edit your account</h1>
+        <p>You can edit your account using the following form:</p>
+        <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+            <form method="post" enctype="multipart/form-data">
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                {% csrf_token %}
+            <p><input type="submit" value="Save changes"></p>
+            </form>
+        </div>
+            <div class="col-9">
+        <script type="text/javascript">
+            var weight={{ user.profile.weight }};
+            var height={{ user.profile.height }}/100;
+            var BMI=weight/(height*height);
+            BMI=BMI.toFixed(2)
+            document.write("Your BMI is ",BMI);
+        </script>
+            </div>
+        </div>
+        </div>
+    </body>
+
+{% endblock %}

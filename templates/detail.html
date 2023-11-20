@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}<title>Food</title>{% endblock %}
+{% block body_block %}
+{% block title %}
+    {% if fcategory %}{{ fcategory.title }}{% endif %}
+{% endblock %}
+
+{% block content %}
+        <h1>{{ food.name }}</h1>
+        <h2><a href="{{ food.fcategory.get_absolute_url }}">{{ food.fcategory}}</a></h2>
+        <p style="font-size:30px">{{ food.calories }} calories/1 {{ food.serving }}</p>
+        <form action="{% url "cart:cart_add" food.id %}" method="post">
+            {{ cart_food_form }}
+            {% csrf_token %}
+            <input type="submit" value="Add to food eaten today">
+        </form>
+        <table class="table table-bordered table-striped table-hover" style="margin: 50px;width:300px;height:200px;">
+            <tr><td>Fat</td><td>{{ food.fat }} g</td></tr>
+            <tr><td>Carbs</td><td>{{ food.carbs }} g</td></tr>
+            <tr><td>Fiber</td><td>{{ food.fiber }} g</td></tr>
+            <tr><td>Protein</td><td>{{ food.protein }} g</td></tr>
+        </table>
+    </div>
+{% endblock %}
+{% endblock %}

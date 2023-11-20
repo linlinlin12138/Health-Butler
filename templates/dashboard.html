@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title_block %}<title>Dashboard</title>{% endblock %}
+{% block body_block %}
+    <h1>Dashboard</h1>
+    <p>Welcome to your dashboard.
+    <p> You can <a href="{% url "healthbutler:useredit" %}">edit your profile</a></p>
+    <p> You can <a href="{% url "cart:cart_detail" %}">see your diet today</a></p>
+ </p>
+{% endblock %}

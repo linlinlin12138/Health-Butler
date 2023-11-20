@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title_block %}<title>registerdone</title>{% endblock %}
+{% block body_block %}
+    <h1>Welcome {{ new_user.first_name }}!</h1>
+    <p>
+     Your account has been successfully created.
+     Now you can <a href="{% url "healthbutler:login" %}">log in</a>.
+     </p>
+{% endblock %}

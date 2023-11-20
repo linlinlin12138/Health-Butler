@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_block %}<title>Personal Diet</title>{% endblock %}
+
+{% block title %}
+    Record of Today's Diet
+{% endblock %}
+
+{% block body_block %}
+{% block content %}
+    <h1>Record of Today's Diet</h1>
+    <div class="container">
+        <table class="cart">
+            <thead>
+                <tr>
+                    <th>Food</th>
+                    <th>Serving</th>
+                    <th>Remove</th>
+                    <th>Calories/Serving</th>
+                    <th>Total Calories</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in cart %}
+                {% with food=item.food %}
+                <tr>
+                    <td>
+                        <a href="{{ food.get_absolute_url }}">
+                            {{ food.name }}
+                        </a>
+                    </td>
+                    <td>{{ item.serving }}</td>
+                    <td><a href="{% url "cart:cart_remove" food.id %}">Remove</a></td>
+                    <td class="num">{{ item.calories }}</td>
+                    <td class="num">{{ item.total_calories }}</td>
+                </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr class="total">
+                <td class="'total">Total</td>
+                <td colspan="4"></td>
+                <td class="num">{{ cart.get_total_calories }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="text-right">
+        <a href="{% url "healthbutler:food_list" %}" class="button light">Continue to add your food</a>
+    </p>
+    <script type="text/javascript">
+        var weight={{ user.profile.weight }};
+        var BMR =weight*30;
+        var cal=BMR-{{ cart.get_total_calories }};
+        document.write("Your BMR is ",BMR);
+        document.write("</br>");
+        document.write("You can take in ",cal," calories today");
+    </script>
+{% endblock %}
+{% endblock %}

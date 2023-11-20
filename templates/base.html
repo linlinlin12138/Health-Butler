@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title_block %}<title>HomePage</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+</head>
+
+<body style="background-color:antiquewhite">
+    {% include "header.html" %}
+    <center>
+        <div class="container pt-5">
+            <div id="header">
+                <h1 style="color:cornflowerblue;text-align:center;">Health Butler</h1>
+            </div>
+        </div>
+
+
+
+        {% block body_block %}
+
+        <h1>Welcome to our Homepage!</h1>
+            <div class="container pt-5">
+        <h2> Want to become healthier? Why not register to be our users now?</h2>
+            </div>
+            <div class="container pt-5">
+                <img src="{% static 'food.png' %}">
+            </div>
+        {% endblock %}
+    </center>
+        <!-- include jquery.js and popper.js -->
+        <script src="{% static 'jquery/jquery-3.5.1.js' %}"></script>
+        <script src="{% static 'popper/popper-1.14.4.js' %}"></script>
+        <!-- import bootstrap js -->
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+        <footer>
+            <div class="row">
+                <div class="col-md-6">
+                    <hr>
+                    <p>Authors: Lin, Zhu, Zhong</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <hr>
+                    <p class="text-dark">Contact with us: 15868136503</p>
+                    <p class="text-dark">Health Butler</p>
+                </div>
+            </div>
+        </footer>
+
+</body>
+
+</html>

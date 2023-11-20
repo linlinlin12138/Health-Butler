@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title_block %}<title>info</title>{% endblock %}
+{% block body_block %}
+    {{ info }}
+    <p><a href="{% url "healthbutler:read" %}">Back</a></p>
+{% endblock %}

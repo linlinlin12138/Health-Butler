@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title_block %}<title>add</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <h1>Add Information</h1>
+        <a href="{% url 'healthbutler:read' %}">Back</a>
+        <table>
+            <form action="{% url 'healthbutler:add' %}" method="post">
+               {% csrf_token %}
+                <tr>
+                <td>
+                    Fcategoryid:
+                </td>
+                <td>
+                    <input type="text" name="fcategory_id">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Slug:
+                </td>
+                <td>
+                    <input type="text" name="slug">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     Calories/Serving:
+                </td>
+                <td>
+                    <input type="text" name="calories" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                     Serving:
+                </td>
+                <td>
+                    <input type="text" name="serving" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Fat:
+                </td>
+                <td>
+                    <input type="text" name="fat" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Carbs:
+                </td>
+                <td>
+                    <input type="text" name="carbs" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Fiber:
+                </td>
+                <td>
+                    <input type="text" name="fiber" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Protein:
+                </td>
+                <td>
+                    <input type="text" name="protein" >
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="add">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+            </form>
+        </table>
+    </center>
+</body>
+{% endblock %}

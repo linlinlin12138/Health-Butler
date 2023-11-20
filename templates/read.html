@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title_block %}<title>read</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+    <a href="{% url 'healthbutler:add' %}">Add Food</a>
+        <table border="1" width="700">
+
+            <tr>
+                <th>Name</th>
+                <th>Calories/Serving</th>
+                <th>Fat</th>
+                <th>Carbs</th>
+                <th>Fiber</th>
+                <th>Protein</th>
+                <th>Operations</th>
+            </tr>
+            {% for s in food %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td>{{ s.calories }} calories</td>
+                <td>{{ s.fat }} g</td>
+                <td>{{ s.carbs }} g</td>
+                <td>{{ s.fiber }} g</td>
+                <td>{{ s.protein }} g</td>
+                <td>
+                    <a href="{% url 'healthbutler:edit' s.id %}">Edit</a>
+                    <a href="{% url 'healthbutler:dele' s.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+{% endblock %}

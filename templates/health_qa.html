@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %}<title>Health Q&A</title>{% endblock %}
+{% block body_block %}
+
+    <div class="container">
+        <h2 style="margin:30px 0;">Health Q&A</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                {% for qa_data in qa_data_col1 %}
+                <p><a href="/healthbutler/health_qa/{{ qa_data.id }}" style="color:black;font-size:16px">{{ qa_data.title }}</a></p>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4">
+                {% for qa_data in qa_data_col2 %}
+                <p><a href="/healthbutler/health_qa/{{ qa_data.id }}" style="color:black;font-size:16px">{{ qa_data.title }}</a></p>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4">
+                {% for qa_data in qa_data_col3 %}
+                <p><a href="/healthbutler/health_qa/{{ qa_data.id }}" style="color:black;font-size:16px">{{ qa_data.title }}</a></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

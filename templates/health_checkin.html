@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title_block %}<title>checkin</title>{% endblock %}
+{% load static %}
+{% block body_block %}
+    <div class="container">
+        <form id="form" method='post'>
+            {% csrf_token %}
+            <input id="name" type='hidden' name='name'>
+        </form>
+        {% for check_in in check_in_data %}
+            {% if check_in.checked %}
+            <div class="row" style="background-color:{{ check_in.color }};margin:20px 0;color:white;border-radius:10px">
+            <div style="width:20%;">
+                <div style="background-color:white;border-radius:30px;width:60px;height:60px;margin:20px 150px;">
+                    <p style="color:{{ check_in.color }};font-size:30px;line-height:60px;text-align:center">√</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="row" style="background-color:{{ check_in.color }};margin:20px 0;color:white;border-radius:10px" onclick="itemCheckIn('{{ check_in.name }}')">
+            <div style="width:20%;">
+                <div style="border:1px solid white;border-radius:30px;width:60px;height:60px;margin:20px 150px;">
+                    <p style="font-size:30px;line-height:60px;text-align:center">√</p>
+                </div>
+            </div>
+            {% endif %}
+            <div style="width:50%;">
+                <p style="font-size:24px;margin:20px 0 0 0;">{{ check_in.name }}</p>
+                <p>You have kept on for {{ check_in.days }} days，you {% if check_in.checked %} have {% else %} haven't {% endif %} checked in today.</p>
+            </div>
+            <div>
+                <img src="{% static check_in.icon %}" style="width:100px;height:100px;"></img>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        function itemCheckIn(name) {
+            var form = $("#form");
+            $("#name").val(name);
+            form.submit();
+        }
+    </script>
+
+{% endblock %}

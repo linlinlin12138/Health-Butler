@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title_block %}<title>edit</title>{% endblock %}
+{% block body_block %}
+<body>
+    <center>
+        <h1>Edit Information</h1>
+        <a href="{% url "healthbutler:read" %}">Back</a>
+        <table>
+            <form action="{% url 'healthbutler:edit' id.id %}" method="post">
+                {% csrf_token %}
+            <tr>
+                <td>
+                    Name:
+                </td>
+                <td>
+                    <input type="text" name="name", value="{{ id.name }}">
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Calories/Serving ({{ id.serving }}):
+                </td>
+                <td>
+                    <input type="text" name="calories", value="{{ id.calories }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Fat:
+                </td>
+                <td>
+                    <input type="text" name="fat", value="{{ id.fat }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Carbs:
+                </td>
+                <td>
+                    <input type="text" name="carbs", value="{{ id.carbs }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Fiber:
+                </td>
+                <td>
+                    <input type="text" name="fiber", value="{{ id.fiber }}" >
+                </td>
+            </tr>
+                <tr>
+                <td>
+                    Protein:
+                </td>
+                <td>
+                    <input type="text" name="protein", value="{{ id.protein }}" >
+                </td>
+            </tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="submit">
+                    <input type="reset" value="reset">
+                </td>
+            </tr>
+            </form>
+        </table>
+    </center>
+</body>
+{% endblock %}

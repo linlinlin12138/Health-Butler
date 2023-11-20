@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body_block %}
+    {% block title_block %}<title>Health Q&A</title>{% endblock %}
+
+    <div class="container">
+        <h2 style="margin:30px 0;">{{ qa_data.title }}</h2>
+        <div class="row">
+            {% for content in content_list %}
+            <p>{{ content }}</p>
+            {% endfor %}            
+        </div>
+    </div>
+{% endblock %}
